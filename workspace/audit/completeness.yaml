@@ -1,0 +1,8 @@
+check: completeness
+date: null
+pages_checked: 0
+summary:
+  critical: 0
+  major: 0
+  minor: 0
+issues: []

@@ -1,0 +1,61 @@
+# ============================================================
+# Примеры course-structure.yaml (после course-structure)
+# Только верхнеуровневый каркас — без сцен, фреймов и блоков.
+# ============================================================
+
+# --- Плоская структура (structure_type: flat) ---
+# Используется для коротких курсов (≤15 мин, ≤7 страниц)
+
+course:
+  title: "Фишинг: как не попасться"
+  total_duration_minutes: 10
+  structure_type: flat
+  pages:
+    - title: "Что такое фишинг"
+      learning_objective: "Понять, что такое фишинг и почему он опасен"
+      duration_minutes: 3
+      content_volume: small
+
+    - title: "Как распознать фишинговое письмо"
+      learning_objective: "Уметь определять 4 признака фишингового письма"
+      duration_minutes: 4
+      content_volume: medium
+
+    - title: "Проверка знаний"
+      learning_objective: "Подтвердить умение распознавать фишинг"
+      duration_minutes: 3
+      content_volume: small
+
+---
+
+# --- Модульная структура (structure_type: modules) ---
+# Используется для курсов >15 мин, >7 страниц, несколько логических разделов
+
+course:
+  title: "Информационная безопасность для сотрудников"
+  total_duration_minutes: 30
+  structure_type: modules
+  modules:
+    - title: "Введение в информационную безопасность"
+      pages:
+        - title: "Зачем нужна информационная безопасность"
+          learning_objective: "Понять, почему ИБ важна для каждого сотрудника"
+          duration_minutes: 5
+          content_volume: small
+
+        - title: "Основные угрозы"
+          learning_objective: "Знать 5 основных типов угроз"
+          duration_minutes: 7
+          content_volume: large
+
+    - title: "Правила безопасной работы"
+      pages:
+        - title: "Пароли и аутентификация"
+          learning_objective: "Уметь создавать надёжные пароли и использовать 2FA"
+          duration_minutes: 5
+          content_volume: medium
+
+        - title: "Проверка знаний"
+          learning_objective: "Подтвердить понимание правил ИБ"
+          duration_minutes: 3
+          content_volume: small

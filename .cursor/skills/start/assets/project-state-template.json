@@ -1,0 +1,58 @@
+{
+  "project": {
+    "source_mode": "full"
+  },
+  "skills": {
+    "start": {
+      "status": "pending",
+      "date": null
+    },
+    "analysis-scanner": {
+      "status": "pending",
+      "date": null
+    },
+    "analysis-router": {
+      "business_driver": null,
+      "course_category": null,
+      "target_audience": null,
+      "status": "pending",
+      "date": null
+    },
+    "analysis-general": {
+      "status": "pending",
+      "date": null
+    },
+    "course-structure": {
+      "status": "pending",
+      "date": null
+    },
+    "course-matrix": {
+      "status": "pending",
+      "date": null
+    },
+    "course-template": {
+      "status": "pending",
+      "date": null
+    },
+    "generation-text": {
+      "status": "pending",
+      "date": null
+    },
+    "generation-quiz": {
+      "status": "pending",
+      "date": null
+    },
+    "generation-image": {
+      "status": "pending",
+      "date": null
+    },
+    "quality-audit": {
+      "status": "pending",
+      "date": null
+    },
+    "quality-fix": {
+      "status": "pending",
+      "date": null
+    }
+  }
+}

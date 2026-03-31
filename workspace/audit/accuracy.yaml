@@ -1,0 +1,10 @@
+check: accuracy
+date: null
+source_mode: null
+pages_checked: 0
+source_coverage_assessment: null
+summary:
+  critical: 0
+  major: 0
+  minor: 0
+issues: []

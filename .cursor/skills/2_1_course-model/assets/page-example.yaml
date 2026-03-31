@@ -1,0 +1,217 @@
+# Базовый пример: compliance-страница
+# Демонстрирует:
+#   - ровно одна vertical_scene
+#   - accordion внутри фрейма concept
+#   - horizontal_scene (вложенная) для пошагового разбора
+#   - паттерн transition → question_bank → summary
+#   - pass_criteria на уровне страницы
+#   - tinymce вместо text, hex ID для всех сущностей
+
+page:
+  id: 1
+  title: "Основы цифровой безопасности"
+  slug: basics-of-digital-security
+  goal: "Понимать основные угрозы цифровой безопасности и уметь распознавать типичные атаки"
+  estimated_time: 12
+  pass_criteria:
+    type: assessment_score
+    value: 80
+
+  scene:
+    type: vertical_scene
+    id: a1b2c3d
+    frames:
+
+      # --- Введение ---
+      - id: b2c3d4e
+        role: intro
+        completion: read
+        blocks:
+          - type: presentation
+            block: tinymce
+            content: >
+              <p>Каждый день мы работаем с конфиденциальной информацией:
+              данные клиентов, финансовые отчёты, внутренние документы.</p>
+              <p>Цифровая безопасность — это не только задача IT-отдела,
+              это ответственность каждого сотрудника.</p>
+
+      # --- Основная теория ---
+      - id: c3d4e5f
+        role: concept
+        completion: open_all_items
+        blocks:
+          - type: presentation
+            block: tinymce
+            content: >
+              <p>Большинство инцидентов безопасности связаны с человеческим
+              фактором. Рассмотрим три основные категории угроз.</p>
+
+          - type: presentation
+            block: accordion
+            items:
+              - id: d4e5f6a
+                title: "Фишинг"
+                blocks:
+                  - type: presentation
+                    block: tinymce
+                    content: >
+                      <p>Фишинг — попытка получить конфиденциальные данные
+                      через поддельные письма, сайты или сообщения.</p>
+                  - type: presentation
+                    block: image
+                    src: files/phishing-example.png
+                    alt: "Пример фишингового письма с характерными признаками"
+
+              - id: e5f6a7b
+                title: "Социальная инженерия"
+                blocks:
+                  - type: presentation
+                    block: tinymce
+                    content: >
+                      <p>Социальная инженерия — манипулятивные техники,
+                      направленные на получение информации или доступа
+                      через доверие и авторитет.</p>
+
+              - id: f6a7b8c
+                title: "Вредоносное ПО"
+                blocks:
+                  - type: presentation
+                    block: tinymce
+                    content: >
+                      <p>Вредоносное программное обеспечение может попасть
+                      на рабочий компьютер через вложения, загрузки
+                      или заражённые USB-устройства.</p>
+
+      # --- Пошаговый разбор (вложенная горизонтальная сцена) ---
+      - id: a7b8c9d
+        role: example
+        completion: click_continue
+        blocks:
+          - type: presentation
+            block: tinymce
+            content: >
+              <p>Разберём на примере, как распознать фишинговое письмо.</p>
+        nested_scene:
+          type: horizontal_scene
+          id: b8c9d0e
+          frames:
+            - id: c9d0e1f
+              role: example
+              completion: read
+              blocks:
+                - type: presentation
+                  block: image
+                  src: files/phishing-step1.png
+                  alt: "Шаг 1: Проверьте адрес отправителя"
+                - type: presentation
+                  block: tinymce
+                  content: >
+                    <p><strong>Шаг 1.</strong> Внимательно посмотрите на адрес
+                    отправителя. Фишинговые письма часто приходят с адресов,
+                    похожих на настоящие, но с мелкими отличиями.</p>
+
+            - id: d0e1f2a
+              role: example
+              completion: read
+              blocks:
+                - type: presentation
+                  block: tinymce
+                  content: >
+                    <p><strong>Шаг 2.</strong> Наведите курсор на ссылку, не кликая.
+                    Если URL не совпадает с текстом ссылки — это тревожный сигнал.</p>
+
+            - id: e1f2a3b
+              role: example
+              completion: read
+              blocks:
+                - type: presentation
+                  block: tinymce
+                  content: >
+                    <p><strong>Шаг 3.</strong> Обратите внимание на срочность.
+                    «Ваш аккаунт заблокирован!» или «Подтвердите в течение
+                    24 часов» — типичные приёмы давления.</p>
+
+      # --- Вступление к проверке ---
+      - id: f2a3b4c
+        role: transition
+        completion: read
+        blocks:
+          - type: presentation
+            block: tinymce
+            content: >
+              <p>Проверим, насколько хорошо вы научились распознавать
+              подозрительные письма. Ответьте на два вопроса.</p>
+
+      # --- Проверка знаний (банк вопросов) ---
+      - id: a3b4c5d
+        role: practice
+        completion: pass_assessment
+        question_bank:
+          type: horizontal_question_bank
+          id: b4c5d6e
+          frames:
+            - id: c5d6e7f
+              role: practice
+              completion: interact
+              blocks:
+                - type: presentation
+                  block: tinymce
+                  content: >
+                    <p>Вы получили письмо от «support@cornpany.com»
+                    с просьбой срочно обновить пароль.</p>
+                - type: assessment
+                  block: single_choice
+                  question: "Что вы сделаете в первую очередь?"
+                  options:
+                    - text: "Перейду по ссылке и обновлю пароль"
+                      correct: false
+                      feedback: "Это может быть фишинг. Адрес содержит опечатку."
+                    - text: "Проверю адрес отправителя и URL ссылки"
+                      correct: true
+                      feedback: "Верно! Обратите внимание: cornpany ≠ company."
+                    - text: "Перешлю письмо коллегам для проверки"
+                      correct: false
+                      feedback: "Пересылка фишинга увеличивает риск."
+                    - text: "Удалю письмо без проверки"
+                      correct: false
+                      feedback: "Лучше сначала убедиться — и сообщить в IT."
+                  explanation: >
+                    Первое действие при подозрительном письме — проверка
+                    отправителя и ссылок, не кликая по ним.
+
+            - id: d6e7f8a
+              role: practice
+              completion: interact
+              blocks:
+                - type: assessment
+                  block: multiple_choice
+                  question: "Какие из признаков указывают на фишинг?"
+                  instruction: "Выберите все подходящие варианты"
+                  options:
+                    - text: "Срочность и давление"
+                      correct: true
+                    - text: "Ошибки в домене отправителя"
+                      correct: true
+                    - text: "Письмо пришло в рабочее время"
+                      correct: false
+                    - text: "Просьба ввести пароль по ссылке"
+                      correct: true
+                    - text: "Наличие логотипа компании"
+                      correct: false
+                  explanation: >
+                    Срочность, ошибки в домене и запрос данных по ссылке —
+                    классические признаки фишинга.
+
+      # --- Итог ---
+      - id: e7f8a9b
+        role: summary
+        completion: read
+        blocks:
+          - type: presentation
+            block: note
+            note_type: important
+            content: >
+              Три правила цифровой безопасности:
+              1. Проверяй отправителя.
+              2. Не кликай по подозрительным ссылкам.
+              3. Сообщай в IT о подозрительных письмах.

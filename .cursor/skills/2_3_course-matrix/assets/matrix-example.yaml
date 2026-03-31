@@ -1,0 +1,158 @@
+# ============================================================
+# Пример course-structure.yaml с планом содержания (после course-matrix)
+# Демонстрирует иерархию: страница → scene → frames → blocks
+# ============================================================
+
+course:
+  title: "Информационная безопасность для сотрудников"
+  total_duration_minutes: 30
+  structure_type: modules
+  modules:
+    - title: "Введение в информационную безопасность"
+      pages:
+
+        - title: "Зачем нужна информационная безопасность"
+          learning_objective: "Понять, почему ИБ важна для каждого сотрудника"
+          duration_minutes: 5
+          content_volume: small
+          scene:
+            frames:
+              - role: intro
+                completion: read
+                blocks:
+                  - block: tinymce
+                    purpose: "Вступление — почему ИБ касается каждого, не только IT"
+                    source_ref: "sources/converted/policy.md#введение"
+                    content_basis: source
+
+              - role: concept
+                completion: read
+                blocks:
+                  - block: tinymce
+                    purpose: "Три ключевых факта об ИБ для неспециалиста"
+                    content_basis: brief
+                  - block: image
+                    purpose: "Инфографика: основные каналы утечек"
+                    content_basis: generate
+
+              - role: summary
+                completion: read
+                blocks:
+                  - block: note
+                    purpose: "Ключевой вывод: ИБ — ответственность каждого"
+                    content_basis: brief
+
+        - title: "Основные угрозы"
+          learning_objective: "Знать основные типы угроз и уметь их распознавать"
+          duration_minutes: 10
+          content_volume: large
+          scene:
+            frames:
+              - role: intro
+                completion: read
+                blocks:
+                  - block: tinymce
+                    purpose: "Контекст: почему важно знать угрозы"
+                    content_basis: brief
+
+              - role: concept
+                completion: open_all_items
+                blocks:
+                  - block: tinymce
+                    purpose: "Обзор: три основные категории угроз"
+                    source_ref: "sources/converted/policy.md#угрозы"
+                    content_basis: source
+                  - block: accordion
+                    purpose: "Детальное раскрытие каждой категории угрозы"
+                    items_count: 3
+                    source_ref: "sources/converted/policy.md#угрозы"
+                    content_basis: source
+
+              - role: example
+                completion: click_continue
+                blocks:
+                  - block: tinymce
+                    purpose: "Вводный текст: разберём на примере"
+                    content_basis: brief
+                nested_scene:
+                  type: horizontal_scene
+                  purpose: "Пошаговый разбор: как распознать фишинговое письмо"
+                  frames_count: 3
+
+              - role: transition
+                completion: read
+                blocks:
+                  - block: tinymce
+                    purpose: "Связка: переход к проверке знаний"
+                    content_basis: brief
+
+              - role: practice
+                completion: pass_assessment
+                question_bank:
+                  bank_type: horizontal_question_bank
+                  questions_count: 2
+                  blocks:
+                    - block: single_choice
+                      purpose: "Определить тип угрозы по описанию ситуации"
+                      content_basis: brief
+                    - block: matching
+                      purpose: "Сопоставить типы угроз с примерами"
+                      content_basis: brief
+
+              - role: summary
+                completion: read
+                blocks:
+                  - block: note
+                    purpose: "Три правила безопасности — резюме"
+                    content_basis: brief
+
+        - title: "Пароли и доступ"
+          learning_objective: "Уметь создавать надёжные пароли и понимать принципы контроля доступа"
+          duration_minutes: 8
+          content_volume: medium
+          pass_criteria:
+            type: assessment_score
+            value: 80
+          scene:
+            frames:
+              - role: intro
+                completion: read
+                blocks:
+                  - block: tinymce
+                    purpose: "Почему пароли — первая линия защиты"
+                    content_basis: brief
+
+              - role: concept
+                completion: read
+                blocks:
+                  - block: tinymce
+                    purpose: "Принципы надёжного пароля"
+                    source_ref: "sources/converted/policy.md#пароли"
+                    content_basis: source
+                  - block: flipcard
+                    purpose: "Карточки: плохой пароль → почему плохой → хороший аналог"
+                    items_count: 4
+                    content_basis: generate
+
+              - role: practice
+                completion: pass_assessment
+                question_bank:
+                  bank_type: vertical_question_bank
+                  questions_count: 3
+                  blocks:
+                    - block: single_choice
+                      purpose: "Какой пароль соответствует политике"
+                      content_basis: source
+                    - block: classify
+                      purpose: "Распределить пароли на надёжные и ненадёжные"
+                      content_basis: generate
+                    - block: scenario
+                      purpose: "Ситуация: коллега просит пароль — что делать"
+                      content_basis: generate
+
+              - role: summary
+                completion: read
+                blocks:
+                  - block: quote
+                    purpose: "Запоминающаяся цитата о паролях"
+                    content_basis: generate

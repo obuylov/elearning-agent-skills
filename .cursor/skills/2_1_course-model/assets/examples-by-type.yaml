@@ -1,0 +1,765 @@
+# ============================================================
+# Примеры структур страниц по типам обучения
+# Каждый пример — скелет одной страницы (сцена → фреймы → блоки)
+# ============================================================
+
+# ────────────────────────────────────────────────────────────
+# 1. COMPLIANCE
+# Акцент на проверке. Вертикальный банк вопросов обязателен.
+# ────────────────────────────────────────────────────────────
+
+compliance_example:
+  description: "Страница о правилах обработки персональных данных"
+  page:
+    id: 1
+    title: "Правила обработки персональных данных"
+    slug: personal-data-rules
+    goal: "Знать основные правила обработки ПДн и уметь определять нарушения"
+    estimated_time: 15
+    pass_criteria:
+      type: assessment_score
+      value: 80
+
+    scene:
+      type: vertical_scene
+      id: a1a1a1a
+      frames:
+        - id: b1b1b1b
+          role: intro
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Обработка персональных данных — одна из ключевых зон ответственности каждого сотрудника.</p>"
+
+        - id: c1c1c1c
+          role: concept
+          completion: open_all_items
+          blocks:
+            - type: presentation
+              block: accordion
+              items:
+                - id: d1d1d1d
+                  title: "Что считается персональными данными"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>ФИО, паспортные данные, адрес, телефон, email, фото...</p>"
+                - id: e1e1e1e
+                  title: "Принципы обработки"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Законность, минимизация, ограничение цели, точность...</p>"
+                - id: f1f1f1f
+                  title: "Что запрещено"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Обработка без согласия, передача третьим лицам без основания...</p>"
+
+        - id: a2a2a2a
+          role: transition
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Проверим ваши знания. Вам нужно набрать не менее 80% правильных ответов.</p>"
+
+        - id: b2b2b2b
+          role: practice
+          completion: pass_assessment
+          question_bank:
+            type: vertical_question_bank
+            id: c2c2c2c
+            frames:
+              - id: d2d2d2d
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: single_choice
+                    question: "Можно ли хранить копию паспорта сотрудника на рабочем столе?"
+                    options:
+                      - text: "Да, если нужно для работы"
+                        correct: false
+                        feedback: "Копии документов должны храниться в защищённых системах."
+                      - text: "Нет, это нарушение правил хранения ПДн"
+                        correct: true
+                        feedback: "Верно. ПДн хранятся только в защищённых системах."
+                      - text: "Да, если файл запаролен"
+                        correct: false
+                        feedback: "Пароль на файле не заменяет защищённое хранилище."
+                    explanation: "ПДн должны храниться в специализированных системах с контролем доступа."
+
+              - id: e2e2e2e
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: matching
+                    instruction: "Сопоставьте тип данных с категорией"
+                    pairs:
+                      - item: "ФИО"
+                        match: "Общие ПДн"
+                      - item: "Диагноз"
+                        match: "Специальные ПДн"
+                      - item: "Отпечаток пальца"
+                        match: "Биометрические ПДн"
+                    feedback_correct: "Верно!"
+                    feedback_incorrect: "Проверьте классификацию категорий ПДн."
+
+              - id: f2f2f2f
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: classify
+                    instruction: "Распределите действия на допустимые и недопустимые"
+                    categories:
+                      - name: "Допустимо"
+                        items:
+                          - "Запросить согласие перед обработкой"
+                          - "Удалить данные по запросу субъекта"
+                      - name: "Недопустимо"
+                        items:
+                          - "Переслать ПДн в мессенджере"
+                          - "Передать базу клиентов подрядчику без договора"
+                    feedback_correct: "Правильно!"
+                    feedback_incorrect: "Пересмотрите принципы обработки ПДн."
+
+        - id: a3a3a3a
+          role: summary
+          completion: read
+          blocks:
+            - type: presentation
+              block: note
+              note_type: important
+              content: "Главное: обрабатывайте только необходимые данные, только с согласия, только в защищённых системах."
+
+# ────────────────────────────────────────────────────────────
+# 2. PROCESS CHANGE
+# Горизонтальная сцена для walkthrough нового процесса.
+# ────────────────────────────────────────────────────────────
+
+process_change_example:
+  description: "Страница о новом процессе согласования заявок"
+  page:
+    id: 2
+    title: "Новый процесс согласования заявок"
+    slug: new-approval-process
+    goal: "Уметь оформить и провести заявку через новую систему"
+    estimated_time: 10
+    pass_criteria:
+      type: all_frames
+
+    scene:
+      type: vertical_scene
+      id: a4a4a4a
+      frames:
+        - id: b4b4b4b
+          role: intro
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>С этого месяца все заявки на закупку оформляются через новую систему. Вот как это работает.</p>"
+
+        - id: c4c4c4c
+          role: concept
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Ключевые изменения: единая точка входа, автоматическое распределение, прозрачные статусы.</p>"
+            - type: presentation
+              block: tabs
+              items:
+                - id: d4d4d4d
+                  title: "Было"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Заявка по email → согласование в переписке → потеря статуса</p>"
+                - id: e4e4e4e
+                  title: "Стало"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Заявка в системе → автоматический маршрут → уведомления на каждом шаге</p>"
+
+        # Walkthrough нового процесса — горизонтальная сцена
+        - id: f4f4f4f
+          role: example
+          completion: click_continue
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Пройдём весь процесс пошагово.</p>"
+          nested_scene:
+            type: horizontal_scene
+            id: a5a5a5a
+            frames:
+              - id: b5b5b5b
+                role: example
+                completion: read
+                blocks:
+                  - type: presentation
+                    block: image
+                    src: files/step1-create.png
+                    alt: "Экран создания заявки"
+                  - type: presentation
+                    block: tinymce
+                    content: "<p><strong>Шаг 1.</strong> Откройте раздел «Заявки» и нажмите «Создать».</p>"
+              - id: c5c5c5c
+                role: example
+                completion: read
+                blocks:
+                  - type: presentation
+                    block: image
+                    src: files/step2-fill.png
+                    alt: "Заполнение формы заявки"
+                  - type: presentation
+                    block: tinymce
+                    content: "<p><strong>Шаг 2.</strong> Заполните форму: что, зачем, сумма, срок.</p>"
+              - id: d5d5d5d
+                role: example
+                completion: read
+                blocks:
+                  - type: presentation
+                    block: image
+                    src: files/step3-submit.png
+                    alt: "Отправка на согласование"
+                  - type: presentation
+                    block: tinymce
+                    content: "<p><strong>Шаг 3.</strong> Нажмите «Отправить». Система сама определит маршрут согласования.</p>"
+
+        - id: e5e5e5e
+          role: practice
+          completion: pass_assessment
+          question_bank:
+            type: horizontal_question_bank
+            id: f5f5f5f
+            frames:
+              - id: a6a6a6a
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: sequence
+                    instruction: "Расставьте шаги нового процесса в правильном порядке"
+                    steps:
+                      - "Открыть раздел «Заявки»"
+                      - "Нажать «Создать»"
+                      - "Заполнить форму"
+                      - "Нажать «Отправить»"
+                    feedback_correct: "Верно!"
+                    feedback_incorrect: "Вспомните walkthrough — порядок был другим."
+
+        - id: b6b6b6b
+          role: summary
+          completion: read
+          blocks:
+            - type: presentation
+              block: note
+              note_type: tip
+              content: "Если заявка «зависла» — проверьте статус в системе. Не пишите на почту."
+
+# ────────────────────────────────────────────────────────────
+# 3. PERFORMANCE
+# Сценарные вопросы, кейсы, reflection.
+# ────────────────────────────────────────────────────────────
+
+performance_example:
+  description: "Страница о работе с возражениями клиентов"
+  page:
+    id: 3
+    title: "Работа с возражениями клиентов"
+    slug: handling-objections
+    goal: "Уметь распознавать типы возражений и выбирать стратегию ответа"
+    estimated_time: 12
+
+    scene:
+      type: vertical_scene
+      id: c6c6c6c
+      frames:
+        - id: d6d6d6d
+          role: intro
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Возражения — нормальная часть продажи. Вопрос не в том, будут ли они, а в том, как вы на них реагируете.</p>"
+
+        - id: e6e6e6e
+          role: concept
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Три типа возражений и подходы к каждому.</p>"
+            - type: presentation
+              block: flipcard
+              cards:
+                - id: f6f6f6f
+                  front: "«Дорого»"
+                  back: "Ценовое возражение → переключить на ценность"
+                - id: a7a7a7a
+                  front: "«Нам это не нужно»"
+                  back: "Возражение по потребности → задать уточняющий вопрос"
+                - id: b7b7b7b
+                  front: "«Мы уже работаем с другими»"
+                  back: "Конкурентное возражение → показать уникальное преимущество"
+
+        - id: c7c7c7c
+          role: example
+          completion: read
+          blocks:
+            - type: presentation
+              block: carousel
+              items:
+                - id: d7d7d7d
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p><strong>Ситуация 1.</strong> Клиент говорит «Дорого». Менеджер: «Давайте сравним с затратами на текущее решение за год».</p>"
+                - id: e7e7e7e
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p><strong>Ситуация 2.</strong> Клиент: «Нам это не нужно». Менеджер: «Расскажите, как сейчас решаете эту задачу?»</p>"
+                - id: f7f7f7f
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p><strong>Ситуация 3.</strong> Клиент: «У нас есть поставщик». Менеджер: «Что бы вы хотели улучшить в текущем сотрудничестве?»</p>"
+
+        - id: a8a8a8a
+          role: practice
+          completion: pass_assessment
+          question_bank:
+            type: horizontal_question_bank
+            id: b8b8b8b
+            frames:
+              - id: c8c8c8c
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: scenario
+                    context: "Клиент на встрече говорит: «Ваш продукт стоит на 30% дороже, чем у конкурентов. Мы не готовы переплачивать.»"
+                    question: "Как вы ответите?"
+                    options:
+                      - text: "Предложу скидку"
+                        correct: false
+                        feedback: "Скидка обесценивает продукт. Лучше показать ценность."
+                      - text: "Спрошу, с чем сравнивают, и покажу разницу в результатах"
+                        correct: true
+                        feedback: "Верно. Переключение на ценность — лучшая стратегия."
+                      - text: "Скажу, что цена фиксированная"
+                        correct: false
+                        feedback: "Это закрывает диалог, а не работает с возражением."
+                    explanation: "При ценовом возражении главное — переключить разговор с цены на результат."
+
+              - id: d8d8d8d
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: case_question
+                    case_description: "Менеджер провёл презентацию. Клиент молчит, потом говорит: «Мы подумаем». Менеджер отвечает: «Хорошо, позвоню через неделю»."
+                    question: "Что менеджер сделал неправильно?"
+                    options:
+                      - text: "Не уточнил, над чем именно будут думать"
+                        correct: true
+                        feedback: "Верно. «Мы подумаем» — скрытое возражение. Нужно уточнить."
+                      - text: "Нужно было предложить скидку"
+                        correct: false
+                        feedback: "Скидка не решает проблему. Сначала нужно понять возражение."
+                      - text: "Всё правильно, нужно дать время"
+                        correct: false
+                        feedback: "«Мы подумаем» часто означает отказ. Нужно работать с ним здесь и сейчас."
+                    explanation: "Скрытые возражения нужно раскрывать: «Что именно вызывает сомнения?»"
+
+        - id: e8e8e8e
+          role: reflection
+          completion: interact
+          blocks:
+            - type: assessment
+              block: reflection
+              prompt: "Вспомните последний случай, когда клиент возражал. Какую стратегию вы использовали? Что бы сделали иначе?"
+              guidance: "Подумайте о типе возражения и о том, переключили ли вы разговор на ценность."
+
+        - id: f8f8f8f
+          role: summary
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Возражение — это не отказ, а запрос на дополнительную информацию. Определите тип, задайте уточняющий вопрос, переключите на ценность.</p>"
+
+# ────────────────────────────────────────────────────────────
+# 4. ONBOARDING
+# Tabs по ролям, умеренный assessment.
+# ────────────────────────────────────────────────────────────
+
+onboarding_example:
+  description: "Страница о корпоративной структуре"
+  page:
+    id: 4
+    title: "Как устроена компания"
+    slug: company-structure
+    goal: "Понимать структуру компании и знать, к кому обращаться по разным вопросам"
+    estimated_time: 8
+
+    scene:
+      type: vertical_scene
+      id: a9a9a9a
+      frames:
+        - id: b9b9b9b
+          role: intro
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Добро пожаловать! Чтобы быстро освоиться, важно понимать, как устроена компания и кто за что отвечает.</p>"
+
+        - id: c9c9c9c
+          role: concept
+          completion: open_all_items
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Компания состоит из нескольких ключевых подразделений.</p>"
+            - type: presentation
+              block: tabs
+              items:
+                - id: d9d9d9d
+                  title: "Продажи"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Отдел продаж отвечает за привлечение и сопровождение клиентов.</p>"
+                - id: e9e9e9e
+                  title: "Поддержка"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Техническая поддержка решает вопросы клиентов после подключения.</p>"
+                - id: f9f9f9f
+                  title: "HR и развитие"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>HR — ваш первый контакт по вопросам адаптации, обучения и внутренних процессов.</p>"
+
+        - id: 1a1a1a1
+          role: example
+          completion: read
+          blocks:
+            - type: presentation
+              block: hotspot
+              background_image: files/office-map.png
+              background_prompt: "Схематичная карта офиса с отмеченными отделами"
+              points:
+                - id: 2a2a2a2
+                  x: 20
+                  y: 30
+                  label: "Продажи"
+                  description: "2 этаж, зона А. Руководитель: спросите на ресепшене."
+                - id: 3a3a3a3
+                  x: 60
+                  y: 50
+                  label: "Поддержка"
+                  description: "3 этаж. Работают посменно."
+                - id: 4a4a4a4
+                  x: 80
+                  y: 20
+                  label: "HR"
+                  description: "1 этаж, кабинет 105."
+
+        - id: 5a5a5a5
+          role: practice
+          completion: pass_assessment
+          question_bank:
+            type: horizontal_question_bank
+            id: 6a6a6a6
+            frames:
+              - id: 7a7a7a7
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: matching
+                    instruction: "Сопоставьте вопрос с подразделением"
+                    pairs:
+                      - item: "Нужна помощь с адаптацией"
+                        match: "HR"
+                      - item: "Клиент жалуется на сбой"
+                        match: "Поддержка"
+                      - item: "Нужно продлить договор"
+                        match: "Продажи"
+                    feedback_correct: "Верно!"
+                    feedback_incorrect: "Пересмотрите вкладки с описанием подразделений."
+
+        - id: 8a8a8a8
+          role: summary
+          completion: read
+          blocks:
+            - type: presentation
+              block: note
+              note_type: tip
+              content: "Не стесняйтесь спрашивать. В первые недели вопросы — это нормально."
+
+# ────────────────────────────────────────────────────────────
+# 5. AWARENESS
+# Короткий формат, минимум assessment.
+# ────────────────────────────────────────────────────────────
+
+awareness_example:
+  description: "Страница о новой программе well-being"
+  page:
+    id: 5
+    title: "Программа заботы о здоровье"
+    slug: wellbeing-program
+    goal: "Узнать о программе well-being и понять, как ей воспользоваться"
+    estimated_time: 5
+
+    scene:
+      type: vertical_scene
+      id: 9a9a9a9
+      frames:
+        - id: 0b0b0b0
+          role: intro
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Компания запускает программу заботы о здоровье сотрудников. Рассказываем, что это и как участвовать.</p>"
+
+        - id: 1b1b1b1
+          role: concept
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Программа включает три направления: физическое здоровье, ментальное здоровье и work-life balance.</p>"
+            - type: presentation
+              block: timeline
+              events:
+                - id: 2b2b2b2
+                  date: "Апрель"
+                  title: "Запуск программы"
+                  description: "Регистрация на портале, выбор активностей"
+                - id: 3b3b3b3
+                  date: "Май — Август"
+                  title: "Основной этап"
+                  description: "Участие в выбранных активностях, набор баллов"
+                - id: 4b4b4b4
+                  date: "Сентябрь"
+                  title: "Итоги"
+                  description: "Подведение результатов, награждение активных участников"
+
+        - id: 5b5b5b5
+          role: example
+          completion: read
+          blocks:
+            - type: presentation
+              block: carousel
+              items:
+                - id: 6b6b6b6
+                  blocks:
+                    - type: presentation
+                      block: image
+                      src: files/wellbeing-sport.png
+                      alt: "Спортивные активности"
+                    - type: presentation
+                      block: tinymce
+                      content: "<p><strong>Спорт:</strong> корпоративный абонемент в фитнес-клуб, беговой клуб по средам.</p>"
+                - id: 7b7b7b7
+                  blocks:
+                    - type: presentation
+                      block: image
+                      src: files/wellbeing-mental.png
+                      alt: "Ментальное здоровье"
+                    - type: presentation
+                      block: tinymce
+                      content: "<p><strong>Ментальное здоровье:</strong> консультации психолога, медитации по пятницам.</p>"
+                - id: 8b8b8b8
+                  blocks:
+                    - type: presentation
+                      block: image
+                      src: files/wellbeing-balance.png
+                      alt: "Work-life balance"
+                    - type: presentation
+                      block: tinymce
+                      content: "<p><strong>Баланс:</strong> гибкий график, day off в день рождения.</p>"
+
+        - id: 9b9b9b9
+          role: reflection
+          completion: interact
+          blocks:
+            - type: assessment
+              block: reflection
+              prompt: "Какое из направлений программы вам наиболее интересно? Почему?"
+              guidance: "Нет правильного ответа — подумайте, что поможет именно вам."
+
+        - id: 0c0c0c0
+          role: summary
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Регистрация открыта на внутреннем портале. Участие добровольное. Начните с одной активности.</p>"
+
+# ────────────────────────────────────────────────────────────
+# 6. KNOWLEDGE
+# Развёрнутая теория, гибкий assessment.
+# ────────────────────────────────────────────────────────────
+
+knowledge_example:
+  description: "Страница о принципах UX-дизайна"
+  page:
+    id: 6
+    title: "Базовые принципы UX-дизайна"
+    slug: ux-principles
+    goal: "Понимать ключевые принципы UX и уметь оценивать интерфейсы с их точки зрения"
+    estimated_time: 15
+
+    scene:
+      type: vertical_scene
+      id: 1c1c1c1
+      frames:
+        - id: 2c2c2c2
+          role: intro
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>UX-дизайн — это не про красоту, а про удобство. Хороший интерфейс незаметен: пользователь достигает цели без усилий.</p>"
+
+        - id: 3c3c3c3
+          role: concept
+          completion: open_all_items
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Пять принципов, которые лежат в основе хорошего UX.</p>"
+            - type: presentation
+              block: accordion
+              items:
+                - id: 4c4c4c4
+                  title: "Видимость (Visibility)"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Важные элементы должны быть заметны. Если пользователь не видит функцию — для него её нет.</p>"
+                - id: 5c5c5c5
+                  title: "Обратная связь (Feedback)"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Система должна сообщать о результате каждого действия: успех, ошибка, процесс загрузки.</p>"
+                - id: 6c6c6c6
+                  title: "Консистентность (Consistency)"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Одинаковые элементы должны выглядеть и работать одинаково во всём интерфейсе.</p>"
+                - id: 7c7c7c7
+                  title: "Предотвращение ошибок (Error prevention)"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Лучше предотвратить ошибку, чем показывать сообщение об ошибке.</p>"
+                - id: 8c8c8c8
+                  title: "Минимализм (Simplicity)"
+                  blocks:
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Каждый лишний элемент конкурирует за внимание. Убирайте всё, что не помогает пользователю.</p>"
+
+        - id: 9c9c9c9
+          role: example
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Рассмотрим два интерфейса и оценим их с точки зрения принципов UX.</p>"
+            - type: presentation
+              block: tabs
+              items:
+                - id: 0d0d0d0
+                  title: "Плохой UX"
+                  blocks:
+                    - type: presentation
+                      block: image
+                      src: files/bad-ux.png
+                      alt: "Пример интерфейса с плохим UX"
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Нет обратной связи, кнопки неконсистентны, важные действия спрятаны.</p>"
+                - id: 1d1d1d1
+                  title: "Хороший UX"
+                  blocks:
+                    - type: presentation
+                      block: image
+                      src: files/good-ux.png
+                      alt: "Пример интерфейса с хорошим UX"
+                    - type: presentation
+                      block: tinymce
+                      content: "<p>Чёткая обратная связь, единый стиль, ключевые действия на виду.</p>"
+
+        - id: 2d2d2d2
+          role: practice
+          completion: pass_assessment
+          question_bank:
+            type: horizontal_question_bank
+            id: 3d3d3d3
+            frames:
+              - id: 4d4d4d4
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: scenario
+                    context: "Пользователь нажал кнопку «Отправить», но ничего не произошло. Через 10 секунд появилось сообщение «Готово» без анимации."
+                    question: "Какой принцип UX нарушен?"
+                    options:
+                      - text: "Обратная связь (Feedback)"
+                        correct: true
+                        feedback: "Верно. Пользователь не получил мгновенной обратной связи."
+                      - text: "Видимость (Visibility)"
+                        correct: false
+                        feedback: "Кнопка была видна. Проблема — в отсутствии реакции после нажатия."
+                      - text: "Минимализм (Simplicity)"
+                        correct: false
+                        feedback: "Минимализм — про лишние элементы, а не про реакцию на действия."
+                    explanation: "Обратная связь должна быть мгновенной: индикатор загрузки, анимация, сообщение."
+
+              - id: 5d5d5d5
+                role: practice
+                completion: interact
+                blocks:
+                  - type: assessment
+                    block: single_choice
+                    question: "Какой принцип говорит: «одинаковые элементы должны работать одинаково»?"
+                    options:
+                      - text: "Консистентность"
+                        correct: true
+                        feedback: "Верно!"
+                      - text: "Видимость"
+                        correct: false
+                        feedback: "Видимость — про заметность элементов."
+                      - text: "Предотвращение ошибок"
+                        correct: false
+                        feedback: "Это про защиту от ошибок, а не про единообразие."
+                    explanation: "Консистентность снижает когнитивную нагрузку."
+
+        - id: 6d6d6d6
+          role: summary
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "<p>Пять принципов UX: видимость, обратная связь, консистентность, предотвращение ошибок, минимализм. Используйте их как чек-лист при оценке интерфейсов.</p>"

@@ -1,0 +1,27 @@
+# ============================================================
+# Шаблон quality-audit.yaml
+# ============================================================
+
+audit:
+  date: "[ISO timestamp]"
+  audited_pages: # [количество]
+  total_issues: # [количество]
+  issues:
+    - issue_id: QA_001
+      page_id: 2
+      block_id: f4a5b6c
+      severity: critical  # critical / major / minor
+      category: content   # content / methodology / accuracy / technical
+      description: >-
+        [Описание проблемы]
+      suggestion: >-
+        [Рекомендация по исправлению]
+      status: to_fix
+
+    - issue_id: QA_002
+      # ...
+
+  summary:
+    critical: # [количество]
+    major: # [количество]
+    minor: # [количество]

@@ -1,0 +1,66 @@
+course:
+  title: "Основы информационной безопасности"
+  total_duration_minutes: 20
+  modules:
+    - id: module_01
+      title: "Введение в информационную безопасность"
+      pages:
+        - id: page_01_01
+          title: "Зачем вам это знать"
+          learning_objective: >-
+            Понимает, почему ИБ — ответственность каждого сотрудника,
+            и какие последствия несёт нарушение политики
+          duration_minutes: 3
+          content_volume: small
+          page_type: intro
+
+        - id: page_01_02
+          title: "Классификация информации"
+          learning_objective: >-
+            Различает 4 уровня конфиденциальности и понимает,
+            как обращаться с информацией каждого уровня
+          duration_minutes: 4
+          content_volume: medium
+          page_type: theory
+
+    - id: module_02
+      title: "Фишинг и социальная инженерия"
+      pages:
+        - id: page_02_01
+          title: "Как работает фишинг"
+          learning_objective: >-
+            Распознаёт 5 ключевых признаков фишинговых писем
+            и знает алгоритм действий при получении подозрительного сообщения
+          duration_minutes: 5
+          content_volume: large
+          page_type: theory
+
+        - id: page_02_02
+          title: "Практика: найди фишинг"
+          learning_objective: >-
+            Применяет знания для анализа реальных примеров писем
+            и принимает правильное решение в каждом случае
+          duration_minutes: 4
+          content_volume: medium
+          page_type: practice
+
+    - id: module_03
+      title: "Пароли и безопасность рабочего места"
+      pages:
+        - id: page_03_01
+          title: "Надёжные пароли"
+          learning_objective: >-
+            Знает требования к паролям и умеет создавать
+            надёжные пароли по методу парольных фраз
+          duration_minutes: 3
+          content_volume: medium
+          page_type: theory
+
+        - id: page_03_02
+          title: "Итоговый тест"
+          learning_objective: >-
+            Демонстрирует усвоение ключевых принципов ИБ,
+            набирая минимум 80% правильных ответов
+          duration_minutes: 1
+          content_volume: small
+          page_type: quiz

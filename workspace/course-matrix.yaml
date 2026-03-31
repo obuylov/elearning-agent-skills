@@ -1,0 +1,153 @@
+pages:
+  - page_id: page_01_01
+    title: "Зачем вам это знать"
+    blocks:
+      - block_id: blk_01_01_01
+        type: text
+        purpose: "Вступление — мотивация и контекст: почему ИБ важна каждому"
+        source_ref: "sources/converted/myfiles.md#статистика-2025"
+        content_placeholder: true
+
+      - block_id: blk_01_01_02
+        type: image
+        purpose: "Инфографика: статистика инцидентов за 2025 год"
+        source_ref: null
+        image_prompt_placeholder: true
+
+      - block_id: blk_01_01_03
+        type: text
+        purpose: "Вывод: ИБ — это ответственность каждого, не только IT-отдела"
+        source_ref: "sources/converted/word.md#1-общие-положения"
+        content_placeholder: true
+
+  - page_id: page_01_02
+    title: "Классификация информации"
+    blocks:
+      - block_id: blk_01_02_01
+        type: text
+        purpose: "Вступление — зачем классифицировать информацию"
+        source_ref: "sources/converted/word.md#2-классификация-информации"
+        content_placeholder: true
+
+      - block_id: blk_01_02_02
+        type: accordion
+        purpose: "4 уровня конфиденциальности с примерами"
+        source_ref: "sources/converted/word.md#2-классификация-информации"
+        items_count: 4
+        content_placeholder: true
+
+      - block_id: blk_01_02_03
+        type: quiz
+        purpose: "Проверка: определить уровень конфиденциальности по примеру"
+        source_ref: "sources/converted/word.md#2-классификация-информации"
+        questions_count: 1
+        content_placeholder: true
+
+  - page_id: page_02_01
+    title: "Как работает фишинг"
+    blocks:
+      - block_id: blk_02_01_01
+        type: text
+        purpose: "Объяснение: что такое фишинг и почему он работает"
+        source_ref: "sources/converted/myfiles.md#что-такое-фишинг"
+        content_placeholder: true
+
+      - block_id: blk_02_01_02
+        type: tabs
+        purpose: "Виды фишинга: email, целевой, через мессенджеры"
+        source_ref: "sources/converted/myfiles.md#виды-фишинга"
+        items_count: 3
+        content_placeholder: true
+
+      - block_id: blk_02_01_03
+        type: image
+        purpose: "Скриншот-пример фишингового письма с разметкой красных флагов"
+        source_ref: null
+        image_prompt_placeholder: true
+
+      - block_id: blk_02_01_04
+        type: text
+        purpose: "5 красных флагов и алгоритм действий"
+        source_ref: "sources/converted/myfiles.md#как-распознать-фишинг"
+        content_placeholder: true
+
+  - page_id: page_02_02
+    title: "Практика: найди фишинг"
+    blocks:
+      - block_id: blk_02_02_01
+        type: text
+        purpose: "Инструкция к практическому заданию"
+        source_ref: null
+        content_placeholder: true
+
+      - block_id: blk_02_02_02
+        type: quiz
+        purpose: "Сценарий 1: определить — фишинг или нет?"
+        source_ref: "sources/converted/myfiles.md#виды-фишинга"
+        questions_count: 1
+        content_placeholder: true
+
+      - block_id: blk_02_02_03
+        type: quiz
+        purpose: "Сценарий 2: что делать, если уже нажали на ссылку?"
+        source_ref: "sources/converted/myfiles.md#что-делать-если-вы-уже-нажали"
+        questions_count: 1
+        content_placeholder: true
+
+      - block_id: blk_02_02_04
+        type: drag-and-drop
+        purpose: "Сопоставить тип атаки с примером"
+        source_ref: "sources/converted/myfiles.md#социальная-инженерия"
+        content_placeholder: true
+
+  - page_id: page_03_01
+    title: "Надёжные пароли"
+    blocks:
+      - block_id: blk_03_01_01
+        type: text
+        purpose: "Требования к паролям в Компании"
+        source_ref: "sources/converted/word.md#3-требования-к-паролям"
+        content_placeholder: true
+
+      - block_id: blk_03_01_02
+        type: accordion
+        purpose: "Топ-5 ошибок при создании паролей"
+        source_ref: "sources/converted/word.md#3-требования-к-паролям"
+        items_count: 5
+        content_placeholder: true
+
+      - block_id: blk_03_01_03
+        type: text
+        purpose: "Метод парольных фраз: как создать надёжный и запоминаемый пароль"
+        source_ref: null
+        content_placeholder: true
+
+  - page_id: page_03_02
+    title: "Итоговый тест"
+    blocks:
+      - block_id: blk_03_02_01
+        type: text
+        purpose: "Вступление к тесту: пороговый балл 80%"
+        source_ref: null
+        content_placeholder: true
+
+      - block_id: blk_03_02_02
+        type: quiz
+        purpose: "Вопрос 1: классификация информации"
+        source_ref: "sources/converted/word.md#2-классификация-информации"
+        questions_count: 1
+        content_placeholder: true
+
+      - block_id: blk_03_02_03
+        type: quiz
+        purpose: "Вопрос 2: распознавание фишинга"
+        source_ref: "sources/converted/myfiles.md#как-распознать-фишинг"
+        questions_count: 1
+        content_placeholder: true
+
+      - block_id: blk_03_02_04
+        type: quiz
+        purpose: "Вопрос 3: действия при инциденте"
+        source_ref: "sources/converted/word.md#6-реагирование-на-инциденты"
+        questions_count: 1
+        content_placeholder: true

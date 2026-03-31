@@ -1,0 +1,64 @@
+{
+  "project": {
+    "title": "Основы информационной безопасности",
+    "code": "IB-2026-001",
+    "client": "Департамент ИБ, ПАО «ТехноГрупп»",
+    "author": "Иванова М. С.",
+    "created": "2026-03-15",
+    "updated": "2026-03-29",
+    "source_mode": "full"
+  },
+  "skills": {
+    "start": {
+      "status": "completed",
+      "date": "2026-03-15"
+    },
+    "analysis-scanner": {
+      "status": "completed",
+      "date": "2026-03-16"
+    },
+    "analysis-router": {
+      "business_driver": "compliance",
+      "course_category": "processes",
+      "target_audience": null,
+      "status": "completed",
+      "date": "2026-03-16"
+    },
+    "analysis-general": {
+      "status": "completed",
+      "date": "2026-03-19"
+    },
+    "course-structure": {
+      "status": "completed",
+      "date": "2026-03-20"
+    },
+    "course-matrix": {
+      "status": "completed",
+      "date": "2026-03-22"
+    },
+    "course-template": {
+      "status": "completed",
+      "date": "2026-03-23"
+    },
+    "generation-text": {
+      "status": "completed",
+      "date": "2026-03-25"
+    },
+    "generation-quiz": {
+      "status": "completed",
+      "date": "2026-03-26"
+    },
+    "generation-image": {
+      "status": "completed",
+      "date": "2026-03-27"
+    },
+    "quality-audit": {
+      "status": "completed",
+      "date": "2026-03-29"
+    },
+    "quality-fix": {
+      "status": "pending",
+      "date": null
+    }
+  }
+}

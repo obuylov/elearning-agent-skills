@@ -1,0 +1,43 @@
+page:
+  id: page_01_01
+  title: "Зачем вам это знать"
+  module: module_01
+  duration_minutes: 3
+  blocks:
+    - id: blk_01_01_01
+      type: text
+      status: filled
+      content: >-
+        В 2025 году почтовый фильтр нашей компании заблокировал более
+        1 200 фишинговых писем. Но 83 письма всё-таки дошли до сотрудников.
+        12 человек перешли по вредоносным ссылкам, а 3 инцидента привели
+        к компрометации учётных записей. Средний ущерб от одной успешной
+        атаки составил 2,3 миллиона рублей.
+
+
+        Информационная безопасность — это не задача IT-отдела. Это
+        ответственность каждого из нас. В этом курсе вы узнаете, как
+        защитить себя и компанию от самых распространённых киберугроз.
+
+    - id: blk_01_01_02
+      type: image
+      status: prompt_ready
+      src: ""
+      alt: "Инфографика: статистика инцидентов ИБ за 2025 год"
+      prompt: >-
+        Corporate infographic, clean flat style, dark blue and white color
+        palette. Title: 'Cybersecurity incidents 2025'. Four data points
+        displayed as icon+number cards in a row: shield icon with '1247
+        blocked', envelope icon with '83 passed', cursor-click icon with
+        '12 clicked', warning icon with '3 compromised'. Minimal clean
+        background, 16:9 aspect ratio.
+
+    - id: blk_01_01_03
+      type: text
+      status: filled
+      content: >-
+        Информационная безопасность начинается с вас. Каждое требование
+        политики ИБ существует не для галочки — за ним стоит реальный
+        инцидент, который можно было предотвратить. В следующих разделах
+        мы разберём, как классифицировать информацию, распознавать фишинг
+        и создавать надёжные пароли.

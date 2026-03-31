@@ -1,0 +1,41 @@
+---
+description: Структура проекта и протокол project-state.json — обязательные конвенции для всех скиллов
+alwaysApply: true
+---
+
+# Структура папок
+
+```
+sources/
+  original/          ← Исходные файлы (docx, pdf, pptx, xlsx)
+  converted/         ← Сконвертированные в Markdown
+
+workspace/
+  brief.md                  ← Единый бриф проекта
+  course-structure.yaml     ← План курса (каркас + матрица)
+  sources-report.md         ← Отчёт аудита исходников
+  audit/                    ← Отчёты аудита качества (по файлу на каждую проверку)
+
+content/
+  pages/             ← YAML-файлы страниц курса
+  files/             ← Изображения и медиафайлы
+
+project-state.json        ← Статус проекта и трекинг скиллов
+```
+
+Быстрые ссылки: [project-state.json](../../project-state.json) · [sources/](../../sources/) · [workspace/](../../workspace/) · [content/](../../content/).
+
+Никогда не создавай файлы за пределами этой структуры.
+
+# Протокол [project-state.json](../../project-state.json)
+
+Каждый скилл обязан:
+1. **Шаг 0** — прочитать [project-state.json](../../project-state.json), убедиться, что предыдущий этап выполнен
+2. **Последний шаг** — обновить [project-state.json](../../project-state.json), отметив свой этап как `completed`
+
+# Режимы исходников
+
+Поле `source_mode` в [project-state.json](../../project-state.json):
+- `full` — исходники покрывают всю тему
+- `partial` — частично; где нет `source_ref` → генерация
+- `none` — исходников нет; всё генерируется из брифа и экспертизы

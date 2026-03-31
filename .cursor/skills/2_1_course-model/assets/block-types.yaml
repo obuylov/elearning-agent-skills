@@ -1,0 +1,305 @@
+# ============================================================
+# Справочник типов блоков
+# Все блоки делятся на presentation и assessment
+# ============================================================
+
+# ────────────────────────────────────────────────────────────
+# PRESENTATION BLOCKS
+# ────────────────────────────────────────────────────────────
+
+# --- Базовые ---
+
+tinymce:
+  category: presentation
+  description: "Богатый текстовый блок — основная единица подачи материала. Поддерживает заголовки, списки, жирный/курсив, ссылки и прочее форматирование."
+  fields:
+    content: "(string) HTML-контент из редактора TinyMCE"
+  notes: >
+    Заменяет отдельные блоки text и list. Один tinymce-блок может содержать
+    и текст, и маркированные/нумерованные списки, и выделения — всё через
+    возможности WYSIWYG-редактора.
+
+image:
+  category: presentation
+  description: "Изображение или иллюстрация"
+  fields:
+    src: "(string) Путь к файлу изображения"
+    alt: "(string) Альтернативный текст"
+    prompt: "(string) Промт для генерации, если изображение создаётся моделью"
+  notes: "src — относительный путь от страницы к файлу в content/files/"
+
+video:
+  category: presentation
+  description: "Видео-вставка"
+  fields:
+    src: "(string) Ссылка или путь к видео"
+    title: "(string) Название видео"
+    duration_seconds: "(number) Длительность в секундах"
+    transcript: "(string) Текстовая расшифровка"
+  notes: "Заполняется пользователем вручную. Ни один generation-скилл не обрабатывает."
+
+quote:
+  category: presentation
+  description: "Цитата — выделенное высказывание"
+  fields:
+    content: "(string) Текст цитаты"
+    author: "(string, optional) Автор"
+    source: "(string, optional) Источник"
+
+note:
+  category: presentation
+  description: "Заметка — выделенный блок с дополнительной информацией"
+  fields:
+    content: "(string) Текст заметки"
+    note_type: "(string) Тип: tip | warning | important | info"
+
+table:
+  category: presentation
+  description: "Таблица с данными"
+  fields:
+    headers: "(array of strings) Заголовки столбцов"
+    rows: "(array of arrays) Строки таблицы"
+    caption: "(string, optional) Подпись к таблице"
+
+hotspot:
+  category: presentation
+  description: "Интерактивная картинка с точками — пользователь нажимает на точки и видит пояснения"
+  fields:
+    background_image: "(string) Путь к фоновому изображению"
+    background_prompt: "(string) Промт для генерации фонового изображения"
+    points:
+      - id: "(string) 7-символьный hex ID"
+        x: "(number) Координата X в процентах (0-100)"
+        y: "(number) Координата Y в процентах (0-100)"
+        label: "(string) Заголовок точки"
+        description: "(string) Описание при нажатии"
+  notes: "Весь блок (фон + точки) заполняется generation-image."
+
+flipcard:
+  category: presentation
+  description: "Карточки с переворотом — лицевая сторона с термином/вопросом, обратная с определением/ответом"
+  fields:
+    cards:
+      - id: "(string) 7-символьный hex ID"
+        front: "(string) Лицевая сторона"
+        back: "(string) Обратная сторона"
+  notes: "Заполняется generation-text."
+
+timeline:
+  category: presentation
+  description: "Временная шкала — хронология событий или этапов процесса"
+  fields:
+    events:
+      - id: "(string) 7-символьный hex ID"
+        date: "(string) Дата или название этапа"
+        title: "(string) Заголовок события"
+        description: "(string) Описание"
+  notes: "Заполняется generation-text."
+
+# --- С вложенной структурой ---
+
+accordion:
+  category: presentation
+  description: "Раскрывающиеся секции — компактная подача нескольких смысловых пунктов"
+  fields:
+    items:
+      - id: "(string) 7-символьный hex ID"
+        title: "(string) Заголовок секции"
+        blocks: "(array) Вложенные блоки (только базовые)"
+  when_to_use:
+    - "Несколько независимых смысловых пунктов"
+    - "Детали, которые удобно скрывать до раскрытия"
+    - "FAQ, перечисление характеристик"
+  differs_from_scene: >
+    Accordion раскрывает грани одной идеи — без прогресса и completion.
+    Если каждый элемент — самостоятельный шаг с собственной задачей, используй сцену.
+  nested_blocks_allowed:
+    - tinymce
+    - image
+    - note
+    - quote
+    - table
+  nested_blocks_forbidden:
+    - accordion
+    - tabs
+    - carousel
+    - video
+    - hotspot
+    - flipcard
+    - timeline
+
+tabs:
+  category: presentation
+  description: "Переключаемые вкладки — параллельная подача контента"
+  fields:
+    items:
+      - id: "(string) 7-символьный hex ID"
+        title: "(string) Заголовок вкладки"
+        blocks: "(array) Вложенные блоки (только базовые)"
+  when_to_use:
+    - "Сравнение вариантов"
+    - "Разные роли / точки зрения"
+    - "Альтернативные подходы"
+    - "Равноправные смысловые ветки"
+  differs_from_scene: >
+    Tabs показывают параллельные грани одной темы — без прогресса.
+    Если каждая вкладка — отдельный учебный шаг, используй сцену.
+  nested_blocks_allowed:
+    - tinymce
+    - image
+    - note
+    - quote
+    - table
+  nested_blocks_forbidden:
+    - accordion
+    - tabs
+    - carousel
+    - video
+    - hotspot
+    - flipcard
+    - timeline
+
+carousel:
+  category: presentation
+  description: "Карточки или экраны, которые перелистываются без отслеживания прогресса"
+  fields:
+    items:
+      - id: "(string) 7-символьный hex ID"
+        blocks: "(array) Вложенные блоки (только базовые)"
+  when_to_use:
+    - "Последовательность карточек"
+    - "Серия примеров"
+    - "Компактная визуальная подача однотипных элементов"
+  differs_from_horizontal_scene: >
+    Carousel — галерея без прогресса и completion.
+    Horizontal scene — пошаговый сценарий с отслеживанием прохождения.
+    Если пользователь ДОЛЖЕН пройти все шаги — horizontal_scene. Если это примеры — carousel.
+  nested_blocks_allowed:
+    - tinymce
+    - image
+    - quote
+    - note
+    - table
+  nested_blocks_forbidden:
+    - accordion
+    - tabs
+    - carousel
+    - video
+    - hotspot
+    - flipcard
+    - timeline
+
+# ────────────────────────────────────────────────────────────
+# ASSESSMENT BLOCKS
+# ────────────────────────────────────────────────────────────
+
+single_choice:
+  category: assessment
+  description: "Вопрос с одним правильным ответом"
+  fields:
+    question: "(string) Текст вопроса"
+    options:
+      - text: "(string) Вариант ответа"
+        correct: "(boolean) Правильный или нет"
+        feedback: "(string) Обратная связь при выборе"
+    explanation: "(string) Общее пояснение после ответа"
+  rules:
+    - "Минимум 3 варианта, рекомендуется 4"
+    - "Ровно один correct: true"
+
+multiple_choice:
+  category: assessment
+  description: "Вопрос с несколькими правильными ответами"
+  fields:
+    question: "(string) Текст вопроса"
+    instruction: "(string) Инструкция (напр. «Выберите все подходящие»)"
+    options:
+      - text: "(string) Вариант ответа"
+        correct: "(boolean) Правильный или нет"
+    explanation: "(string) Общее пояснение"
+  rules:
+    - "Минимум 4 варианта"
+    - "Несколько correct: true"
+
+sorting:
+  category: assessment
+  description: "Упорядочивание элементов в правильную последовательность"
+  fields:
+    instruction: "(string) Инструкция"
+    items: "(array of strings) Элементы в правильном порядке"
+    feedback_correct: "(string) Обратная связь при правильном ответе"
+    feedback_incorrect: "(string) Обратная связь при ошибке"
+
+matching:
+  category: assessment
+  description: "Сопоставление пар (элемент → соответствие)"
+  fields:
+    instruction: "(string) Инструкция"
+    pairs:
+      - item: "(string) Элемент"
+        match: "(string) Соответствие"
+    feedback_correct: "(string) Обратная связь при правильном ответе"
+    feedback_incorrect: "(string) Обратная связь при ошибке"
+
+sequence:
+  category: assessment
+  description: "Восстановление правильной последовательности шагов"
+  fields:
+    instruction: "(string) Инструкция"
+    steps: "(array of strings) Шаги в правильном порядке"
+    feedback_correct: "(string) Обратная связь при правильном ответе"
+    feedback_incorrect: "(string) Обратная связь при ошибке"
+
+classify:
+  category: assessment
+  description: "Классификация элементов по категориям"
+  fields:
+    instruction: "(string) Инструкция"
+    categories:
+      - name: "(string) Название категории"
+        items: "(array of strings) Элементы, принадлежащие этой категории"
+    feedback_correct: "(string) Обратная связь при правильном ответе"
+    feedback_incorrect: "(string) Обратная связь при ошибке"
+
+fill_gap:
+  category: assessment
+  description: "Заполнение пропусков в тексте"
+  fields:
+    text_with_blanks: "(string) Текст с маркерами {{1}}, {{2}} и т.д."
+    blanks:
+      - id: "(string) Номер пропуска (1, 2, ...)"
+        correct_answers: "(array of strings) Допустимые варианты ответа"
+        feedback: "(string) Обратная связь"
+
+scenario:
+  category: assessment
+  description: "Сценарный вопрос с контекстом и выбором действий"
+  fields:
+    context: "(string) Описание ситуации"
+    question: "(string) Вопрос: что вы сделаете?"
+    options:
+      - text: "(string) Вариант действия"
+        correct: "(boolean) Оптимальный выбор или нет"
+        feedback: "(string) Обратная связь: почему это хороший/плохой выбор"
+    explanation: "(string) Общее пояснение"
+  notes: "Отличается от single_choice наличием развёрнутого контекста (ситуации)"
+
+case_question:
+  category: assessment
+  description: "Вопрос на основе кейса — анализ реальной или смоделированной ситуации"
+  fields:
+    case_description: "(string) Описание кейса"
+    question: "(string) Вопрос по кейсу"
+    options:
+      - text: "(string) Вариант ответа"
+        correct: "(boolean)"
+        feedback: "(string)"
+    explanation: "(string) Разбор кейса"
+
+reflection:
+  category: assessment
+  description: "Открытый рефлексивный вопрос без правильного ответа"
+  fields:
+    prompt: "(string) Вопрос для размышления"
+    guidance: "(string, optional) Подсказка или направление для размышления"
+  notes: "Не оценивается. Используется для осмысления материала."

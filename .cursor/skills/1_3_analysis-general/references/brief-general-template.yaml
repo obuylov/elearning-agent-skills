@@ -1,0 +1,16 @@
+# --- General Parameters ---
+# Аудитория вынесена в отдельную секцию брифа (из assets/audiences/)
+course_title: "[Рабочее название курса]"
+source_coverage: "[full / partial / none — из project-state.json]"
+
+course_parameters:
+  duration_minutes: "[Ожидаемое время]"
+  mandatory: true/false
+  deadline: "[Дата запуска, если есть]"
+
+tone_of_voice:
+  style: "[формальный / нейтрально-деловой / дружелюбный / неформальный]"
+  address: "[ты / вы]"
+  humor_allowed: true/false
+  storytelling_allowed: true/false
+  brand_guidelines: "[ссылка или описание, если есть]"

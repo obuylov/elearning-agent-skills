@@ -1,0 +1,205 @@
+# ============================================================
+# Пример файла страницы для content/pages/
+# Структура по модели course-model: page → scene → frames → blocks
+# ============================================================
+
+page:
+  id: 2
+  title: "Основные угрозы цифровой безопасности"
+  slug: main-threats
+  module: "Введение в информационную безопасность"
+  goal: "Знать основные типы угроз и уметь их распознавать"
+  estimated_time: 10
+  content_volume: large
+  pass_criteria:
+    type: assessment_score
+    value: 80
+
+  scene:
+    type: vertical_scene
+    id: a1b2c3d
+    frames:
+
+      # --- Введение ---
+      - id: b2c3d4e
+        role: intro
+        completion: read
+        blocks:
+          - id: c3d4e5f
+            type: presentation
+            block: tinymce
+            status: empty
+            purpose: "Контекст: почему важно знать угрозы"
+            content_basis: brief
+            content: ""
+
+      # --- Теория: типы угроз ---
+      - id: d4e5f6a
+        role: concept
+        completion: open_all_items
+        blocks:
+          - id: e5f6a7b
+            type: presentation
+            block: tinymce
+            status: empty
+            purpose: "Обзор: три основные категории угроз"
+            source_ref: "sources/converted/policy.md#угрозы"
+            content_basis: source
+            content: ""
+
+          - id: f6a7b8c
+            type: presentation
+            block: accordion
+            status: empty
+            purpose: "Детальное раскрытие каждой категории угрозы"
+            source_ref: "sources/converted/policy.md#угрозы"
+            content_basis: source
+            items:
+              - id: a7b8c9d
+                title: ""
+                blocks:
+                  - type: presentation
+                    block: tinymce
+                    content: ""
+                  - type: presentation
+                    block: image
+                    src: ""
+                    alt: ""
+                    prompt: ""
+              - id: b8c9d0e
+                title: ""
+                blocks:
+                  - type: presentation
+                    block: tinymce
+                    content: ""
+              - id: c9d0e1f
+                title: ""
+                blocks:
+                  - type: presentation
+                    block: tinymce
+                    content: ""
+
+      # --- Пример: walkthrough (вложенная горизонтальная сцена) ---
+      - id: d0e1f2a
+        role: example
+        completion: click_continue
+        blocks:
+          - id: e1f2a3b
+            type: presentation
+            block: tinymce
+            status: empty
+            purpose: "Вводный текст: разберём на примере фишинговое письмо"
+            content_basis: brief
+            content: ""
+        nested_scene:
+          type: horizontal_scene
+          id: f2a3b4c
+          frames:
+            - id: a3b4c5d
+              role: example
+              completion: read
+              blocks:
+                - id: b4c5d6e
+                  type: presentation
+                  block: image
+                  status: empty
+                  purpose: "Скриншот фишингового письма — шаг 1: адрес отправителя"
+                  content_basis: generate
+                  src: ""
+                  alt: ""
+                  prompt: ""
+                - id: c5d6e7f
+                  type: presentation
+                  block: tinymce
+                  status: empty
+                  purpose: "Пояснение: как проверить адрес отправителя"
+                  content_basis: brief
+                  content: ""
+            - id: d6e7f8a
+              role: example
+              completion: read
+              blocks:
+                - id: e7f8a9b
+                  type: presentation
+                  block: tinymce
+                  status: empty
+                  purpose: "Пояснение: как проверить URL ссылки"
+                  content_basis: brief
+                  content: ""
+
+      # --- Связка перед проверкой ---
+      - id: f8a9b0c
+        role: transition
+        completion: read
+        blocks:
+          - id: a9b0c1d
+            type: presentation
+            block: tinymce
+            status: empty
+            purpose: "Переход к проверке знаний"
+            content_basis: brief
+            content: ""
+
+      # --- Проверка (банк вопросов) ---
+      - id: b0c1d2e
+        role: practice
+        completion: pass_assessment
+        question_bank:
+          type: horizontal_question_bank
+          id: c1d2e3f
+          frames:
+            - id: d2e3f4a
+              role: practice
+              completion: interact
+              blocks:
+                - id: e3f4a5b
+                  type: assessment
+                  block: single_choice
+                  status: empty
+                  purpose: "Определить тип угрозы по описанию ситуации"
+                  content_basis: brief
+                  question: ""
+                  options:
+                    - text: ""
+                      correct: false
+                      feedback: ""
+                    - text: ""
+                      correct: false
+                      feedback: ""
+                    - text: ""
+                      correct: false
+                      feedback: ""
+                    - text: ""
+                      correct: false
+                      feedback: ""
+                  explanation: ""
+            - id: f4a5b6c
+              role: practice
+              completion: interact
+              blocks:
+                - id: a5b6c7d
+                  type: assessment
+                  block: matching
+                  status: empty
+                  purpose: "Сопоставить типы угроз с примерами"
+                  content_basis: brief
+                  instruction: ""
+                  pairs:
+                    - item: ""
+                      match: ""
+                  feedback_correct: ""
+                  feedback_incorrect: ""
+
+      # --- Итог ---
+      - id: b6c7d8e
+        role: summary
+        completion: read
+        blocks:
+          - id: c7d8e9f
+            type: presentation
+            block: note
+            status: empty
+            purpose: "Три правила безопасности — ключевой вывод"
+            content_basis: brief
+            note_type: important
+            content: ""

@@ -1,0 +1,267 @@
+# ============================================================
+# Справочник типов сцен и банков вопросов
+# ============================================================
+
+# ────────────────────────────────────────────────────────────
+# СЦЕНЫ
+# ────────────────────────────────────────────────────────────
+
+vertical_scene:
+  description: "Основной тип сцены. Фреймы идут сверху вниз, формируя последовательность учебных шагов."
+  direction: vertical
+  level: "Верхний — ровно одна на страницу"
+  id_format: "7-символьный hexadecimal"
+  when_to_use:
+    - "Базовый ритм страницы"
+    - "Линейная логика: ввод → объяснение → пример → практика → вывод"
+  rules:
+    - "На странице ровно одна vertical_scene"
+    - "Не может быть вложенной (только верхнеуровневая)"
+    - "Может содержать во фреймах: horizontal_scene и question_bank"
+  can_contain:
+    - frames (обязательно)
+  example:
+    scene:
+      type: vertical_scene
+      id: a1b2c3d
+      frames:
+        - id: b2c3d4e
+          role: intro
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "Введение в тему"
+        - id: c3d4e5f
+          role: concept
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "Основная теория"
+        - id: d4e5f6a
+          role: summary
+          completion: read
+          blocks:
+            - type: presentation
+              block: tinymce
+              content: "Подведение итогов"
+
+horizontal_scene:
+  description: "Пошаговая сцена. Фреймы показываются один за другим как экраны или слайды."
+  direction: horizontal
+  level: "Вложенный — только внутри фрейма vertical_scene"
+  id_format: "7-символьный hexadecimal"
+  when_to_use:
+    - "Walkthrough — пошаговый разбор процесса"
+    - "Мини-сторителлинг внутри большой вертикальной сцены"
+    - "Слайдовые объяснения"
+    - "Сценарные мини-последовательности"
+  rules:
+    - "Не может быть верхнеуровневой сценой страницы"
+    - "Вкладывается только во фрейм vertical_scene"
+    - "На странице может быть несколько horizontal_scene (в разных фреймах)"
+  differs_from_carousel: >
+    Carousel — presentation-блок без прогресса, для однотипных элементов (галерея).
+    Horizontal scene — контейнер фреймов с completion, для пошаговых сценариев с отслеживанием.
+  can_contain:
+    - frames (обязательно)
+  can_be_nested_in:
+    - frame (через поле nested_scene, только внутри vertical_scene)
+  example_nested:
+    - id: e5f6a7b
+      role: example
+      completion: click_continue
+      blocks:
+        - type: presentation
+          block: tinymce
+          content: "Разберём процесс по шагам."
+      nested_scene:
+        type: horizontal_scene
+        id: f6a7b8c
+        frames:
+          - id: a7b8c9d
+            role: example
+            completion: read
+            blocks:
+              - type: presentation
+                block: tinymce
+                content: "Шаг 1: ..."
+          - id: b8c9d0e
+            role: example
+            completion: read
+            blocks:
+              - type: presentation
+                block: tinymce
+                content: "Шаг 2: ..."
+
+# ────────────────────────────────────────────────────────────
+# БАНКИ ВОПРОСОВ
+# ────────────────────────────────────────────────────────────
+
+vertical_question_bank:
+  description: "Банк вопросов с вертикальным расположением. Вопросы идут сверху вниз."
+  direction: vertical
+  id_format: "7-символьный hexadecimal"
+  when_to_use:
+    - "Итоговые тесты"
+    - "Серьёзные проверки знаний"
+    - "Длинные assessment-блоки (5+ вопросов)"
+  rules:
+    - "Вкладывается в отдельный фрейм с role: practice"
+    - "Вступительный текст и итог — в соседних фреймах, не внутри фрейма с банком"
+    - "Каждый фрейм банка — один вопрос или одно упражнение"
+  can_contain:
+    - frames (каждый фрейм = один вопрос)
+  can_be_nested_in:
+    - frame (через поле question_bank)
+  example:
+    # Рекомендуемый паттерн: transition → bank → summary
+    - id: c9d0e1f
+      role: transition
+      completion: read
+      blocks:
+        - type: presentation
+          block: tinymce
+          content: "Проверим ваши знания. Ответьте на 5 вопросов."
+    - id: d0e1f2a
+      role: practice
+      completion: pass_assessment
+      question_bank:
+        type: vertical_question_bank
+        id: e1f2a3b
+        frames:
+          - id: f2a3b4c
+            role: practice
+            completion: interact
+            blocks:
+              - type: assessment
+                block: single_choice
+                question: "Вопрос 1"
+          - id: a3b4c5d
+            role: practice
+            completion: interact
+            blocks:
+              - type: assessment
+                block: matching
+                instruction: "Сопоставьте элементы"
+    - id: b4c5d6e
+      role: summary
+      completion: read
+      blocks:
+        - type: presentation
+          block: tinymce
+          content: "Итог и основные выводы."
+
+horizontal_question_bank:
+  description: "Банк вопросов с горизонтальным прохождением. Вопросы показываются как последовательность экранов."
+  direction: horizontal
+  id_format: "7-символьный hexadecimal"
+  when_to_use:
+    - "Промежуточные упражнения"
+    - "Короткие проверки на 2–4 вопроса"
+    - "Лёгкие assessment-вставки внутри сцены"
+  rules:
+    - "Вкладывается в отдельный фрейм с role: practice"
+    - "Каждый фрейм — отдельный вопрос"
+  can_contain:
+    - frames (каждый фрейм = один вопрос)
+  can_be_nested_in:
+    - frame (через поле question_bank)
+  example:
+    - id: c5d6e7f
+      role: practice
+      completion: pass_assessment
+      question_bank:
+        type: horizontal_question_bank
+        id: d6e7f8a
+        frames:
+          - id: e7f8a9b
+            role: practice
+            completion: interact
+            blocks:
+              - type: presentation
+                block: tinymce
+                content: "Прочитайте ситуацию..."
+              - type: assessment
+                block: scenario
+                context: "Описание ситуации"
+                question: "Что вы сделаете?"
+          - id: f8a9b0c
+            role: practice
+            completion: interact
+            blocks:
+              - type: assessment
+                block: single_choice
+                question: "Вопрос 2"
+
+# ────────────────────────────────────────────────────────────
+# ПРАВИЛА ВЛОЖЕННОСТИ
+# ────────────────────────────────────────────────────────────
+
+nesting_rules:
+  max_scene_depth: 2
+  one_scene_per_page: true
+  description: >
+    Страница содержит ровно одну vertical_scene.
+    Внутри её фреймов могут быть несколько horizontal_scene
+    и банков вопросов. Третий уровень вложенности запрещён.
+
+  frame_composition:
+    description: >
+      Фрейм может технически содержать blocks + nested_scene + question_bank,
+      но рекомендуется один фрейм = одна задача. Блоки всегда идут перед
+      вложенными сущностями.
+    recommended_patterns:
+      - "blocks only — стандартный фрейм"
+      - "blocks + nested_scene — текст-контекст перед walkthrough"
+      - "question_bank only — фрейм-обёртка для банка вопросов"
+    discouraged_patterns:
+      - "blocks + nested_scene + question_bank — слишком много в одном фрейме"
+
+  allowed_in_frame:
+    - blocks (presentation и assessment — всегда)
+    - nested_scene (только horizontal_scene — опционально)
+    - question_bank (один банк вопросов — опционально)
+
+  forbidden:
+    - "Несколько vertical_scene на странице"
+    - "horizontal_scene как верхнеуровневая сцена"
+    - "Сцена глубже 2 уровней"
+    - "Банк вопросов внутри банка вопросов"
+    - "Банк вопросов, содержащий вложенные сцены"
+    - "Вложенный presentation-блок внутри другого вложенного (accordion в tabs и т.п.)"
+    - "Пустой фрейм (без блоков и вложенных сущностей)"
+
+  discouraged:
+    - "video внутри accordion — скрытое видео плохо обнаруживается"
+    - "reflection внутри horizontal_question_bank — сбивает ритм быстрых карточек"
+    - "assessment-блок + question_bank в одном фрейме — смешивает одиночный вопрос и серию"
+    - "больше 2 вложенных presentation-блоков в одном фрейме — информационная перегрузка"
+
+# ────────────────────────────────────────────────────────────
+# КРИТЕРИИ ВЫБОРА: СЦЕНА vs PRESENTATION-БЛОК
+# ────────────────────────────────────────────────────────────
+
+selection_guide:
+  scene_vs_presentation_block:
+    description: >
+      Если у каждого элемента есть собственная учебная задача и условие
+      завершения — это фреймы сцены. Если элементы раскрывают одну идею
+      с разных сторон — это presentation-блок.
+    use_scene_when:
+      - "Элементы — самостоятельные шаги с собственным completion"
+      - "Нужно отслеживать прогресс по каждому элементу"
+      - "Внутри элементов разные типы блоков (tinymce + image + assessment)"
+    use_presentation_block_when:
+      - "Элементы дополняют одну идею с разных сторон"
+      - "Нет необходимости отслеживать прогресс по каждому элементу"
+      - "Содержимое однородное (tinymce + image в каждом элементе)"
+
+  carousel_vs_horizontal_scene:
+    carousel: "Галерея однотипных элементов без прогресса. Нет completion, нет role."
+    horizontal_scene: "Пошаговый сценарий с отслеживанием. Каждый шаг = фрейм с role и completion."
+    rule: >
+      Если пользователь ДОЛЖЕН пройти все шаги и это важно для обучения —
+      horizontal_scene. Если это дополнительные примеры или иллюстрации —
+      carousel.

@@ -1,0 +1,12 @@
+check: technical
+date: null
+stats:
+  pages: 0
+  scenes: 0
+  frames: 0
+  blocks: 0
+summary:
+  critical: 0
+  major: 0
+  minor: 0
+issues: []

@@ -1,0 +1,48 @@
+# ============================================================
+# Примеры заполненных image- и hotspot-блоков
+# ============================================================
+
+# --- image: привязка готового изображения ---
+- id: e4f5a6b
+  type: image
+  status: filled
+  purpose: "Инфографика: статистика утечек за последний год"
+  content_basis: generate
+  src: "files/security-stats.png"
+  alt: "Инфографика со статистикой утечек данных в 2025 году"
+  prompt: ""
+
+# --- image: генерация промта ---
+- id: e4f5a6b
+  type: image
+  status: prompt_ready
+  purpose: "Инфографика: статистика утечек за последний год"
+  content_basis: generate
+  src: ""
+  alt: "Инфографика со статистикой утечек данных"
+  prompt: >-
+    Corporate infographic about data breach statistics.
+    Flat vector style, blue and white color palette.
+    Show icons: shield, lock, warning sign, graph trending up.
+    Clean layout, no text on image. 16:9 aspect ratio.
+
+# --- hotspot: полный блок (фон + точки) ---
+- id: f6a7b8c
+  type: hotspot
+  status: filled
+  purpose: "Интерактивная схема рабочего стола — где хранить пароли"
+  content_basis: generate
+  background_image:
+    src: ""
+    alt: "Схема рабочего стола сотрудника с отмеченными зонами безопасности"
+    prompt: >-
+      Top-down view of a clean office desk with computer, phone, notebook,
+      sticky notes, locked drawer. Flat vector style, soft blue palette.
+      No text on image. 16:9 aspect ratio.
+  points:
+    - label: "Менеджер паролей"
+      description: "Единственное допустимое место хранения паролей — корпоративный менеджер паролей."
+    - label: "Стикеры на мониторе"
+      description: "Категорически запрещено. Пароль виден любому, кто проходит мимо."
+    - label: "Заблокированный ящик"
+      description: "Бумажные копии паролей — только в запираемом ящике, если иного не предусмотрено."

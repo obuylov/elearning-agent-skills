@@ -1,0 +1,32 @@
+---
+description: Конвенции файла брифа — единый файл, структура, правила изменения
+globs: workspace/brief.md
+alwaysApply: false
+---
+
+# Бриф проекта
+
+[workspace/brief.md](../../workspace/brief.md) — единственный файл брифа. Не дублировать, не создавать альтернативных версий.
+
+# Структура
+
+Бриф состоит из четырёх частей:
+1. **Бизнес-драйвер** — заполняется скиллом `analysis-general` по ассету из `assets/drivers/`
+2. **Категория курса** — заполняется тем же скиллом по ассету из `assets/categories/`
+3. **Аудитория** — заполняется по ассету из `assets/audiences/`
+4. **Общие параметры** — объём, редполитика, дедлайн
+
+# Ключевые поля
+
+- `business_driver` — зачем курс (compliance / rollout / performance / onboarding / knowledge)
+- `course_category` — о чём курс (processes / products / hardskills / softskills / business)
+- `target_audience` — для кого курс (frontline / managers / newcomers / experts / external)
+- `tone_of_voice` — стиль подачи
+- `addressing` — форма обращения (ты / вы)
+- `source_coverage` — покрытие исходниками (full / partial / none)
+
+# Правила изменения
+
+- Создаётся и наполняется только через скиллы анализа (кластер 2)
+- Точечные правки — через `edit`
+- Не менять напрямую без явного запроса пользователя
