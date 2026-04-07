@@ -1,9 +1,6 @@
 ---
 name: course-template
-description: >-
-  Создание YAML-файлов страниц в content/pages/ по иерархии модели
-  (page → scene → frames → blocks) с техническими ID, статусами
-  и production-полями. Используй после course-matrix, когда план содержания утверждён.
+description: Создание YAML-файлов страниц в content/pages/ по иерархии модели (page → scene → frames → blocks) с техническими ID, статусами и production-полями. Используй после course-matrix, когда план содержания утверждён.
 ---
 
 # Course-Template — Генерация шаблонов страниц

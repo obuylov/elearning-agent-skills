@@ -1,9 +1,6 @@
 ---
 name: course-matrix
-description: >-
-  Планирование содержания страниц по модели course-model: сцена, фреймы (роли,
-  completion), блоки, вложенные сцены, банки вопросов. Работает в файле
-  course-structure.yaml. Используй после course-structure, когда каркас утверждён.
+description: Планирование содержания страниц по модели course-model: сцена, фреймы (роли, completion), блоки, вложенные сцены, банки вопросов. Работает в файле course-structure.yaml. Используй после course-structure, когда каркас утверждён.
 ---
 
 # Course-Matrix — План содержания страниц
