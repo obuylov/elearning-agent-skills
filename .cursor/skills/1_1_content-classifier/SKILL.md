@@ -1,6 +1,6 @@
 ---
 name: content-classifier
-description: Чтение и анализ сконвертированных .md файлов, классификация материалов и формирование отчёта в workspace/sources-report.md. Вызывается скиллом analysis-scanner после (возможной) конвертации.
+description: "Чтение и анализ сконвертированных .md файлов, классификация материалов и формирование отчёта в workspace/sources-report.md. Вызывается скиллом analysis-scanner после (возможной) конвертации."
 ---
 
 # Content-Classifier — Анализ и классификация исходников

@@ -1,6 +1,6 @@
 ---
 name: analysis-router
-description: Определение позиции проекта по трём осям: бизнес-драйвер (зачем) × категория курса (что) × аудитория (для кого). Маршрутизация на analysis-general или course-model. Используй после analysis-scanner или напрямую после start (если source_mode: none).
+description: "Определение позиции проекта по трём осям: бизнес-драйвер (зачем) × категория курса (что) × аудитория (для кого). Маршрутизация на analysis-general или course-model. Используй после analysis-scanner или напрямую после start (если source_mode: none)."
 ---
 
 # Analysis-Router — Определение типа курса (трёхосевая модель)

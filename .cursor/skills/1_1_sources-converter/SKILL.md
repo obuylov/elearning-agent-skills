@@ -1,6 +1,6 @@
 ---
 name: sources-converter
-description: Конвертация исходных файлов в Markdown с оценкой качества. Вызывается скиллом analysis-scanner только при необходимости конвертации.
+description: "Конвертация исходных файлов в Markdown с оценкой качества. Вызывается скиллом analysis-scanner только при необходимости конвертации."
 ---
 
 # Sources-Converter — Конвертация исходников
