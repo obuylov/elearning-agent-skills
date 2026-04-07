@@ -3,7 +3,7 @@ name: generation-quiz
 description: >-
   Оркестрация генерации проверочных заданий через субагентов.
   На каждую страницу с незаполненными assessment-блоками запускается
-  отдельный фоновый субагент quiz-page-generator. Используй после
+  отдельный фоновый субагент generator-quiz. Используй после
   generation-text, когда текстовые блоки заполнены.
 ---
 
@@ -15,13 +15,13 @@ description: >-
 - [workspace/brief.md](../../../workspace/brief.md) (бизнес-драйвер, принципы проектирования, стратегия оценки)
 - [content/pages/*.yaml](../../../content/pages/) (файлы страниц)
 
-> **Важно:** Этот скилл НЕ генерирует квизы сам. Он выступает оркестратором: собирает контекст и запускает субагент `quiz-page-generator` для каждой страницы с незаполненными assessment-блоками.
+> **Важно:** Этот скилл НЕ генерирует квизы сам. Он выступает оркестратором: собирает контекст и запускает субагент `generator-quiz` для каждой страницы с незаполненными assessment-блоками.
 
 ## Субагент
 
 | Файл | Режим | Назначение |
 |------|-------|------------|
-| [`.cursor/agents/quiz-page-generator.md`](../../agents/quiz-page-generator.md) | background | Генерация assessment-блоков для одной страницы |
+| [`.cursor/agents/generator-quiz.md`](../../agents/generator-quiz.md) | background | Генерация assessment-блоков для одной страницы |
 
 ## Logic
 
@@ -65,11 +65,11 @@ _active:
 
 ```yaml
 _lock:
-  agent: quiz-page-generator
+  agent: generator-quiz
   started: "{ISO timestamp}"
 ```
 
-**3b. Запуск субагентов.** Для каждой страницы запусти субагент `quiz-page-generator` **в фоне** с промтом:
+**3b. Запуск субагентов.** Для каждой страницы запусти субагент `generator-quiz` **в фоне** с промтом:
 
 ```
 Заполни assessment-блоки на странице.

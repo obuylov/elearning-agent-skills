@@ -3,7 +3,7 @@ name: generation-image
 description: >-
   Оркестрация генерации визуального контента через субагентов.
   На каждую страницу с image/hotspot-блоками запускается отдельный фоновый
-  субагент image-page-generator. Используй после generation-quiz,
+  субагент generator-images. Используй после generation-quiz,
   когда тексты и квизы заполнены.
 ---
 
@@ -16,13 +16,13 @@ description: >-
 - [content/pages/*.yaml](../../../content/pages/) (файлы страниц)
 - [content/files/](../../../content/files/) (готовые изображения, если есть)
 
-> **Важно:** Этот скилл НЕ генерирует промты сам. Он выступает оркестратором: собирает контекст и запускает субагент `image-page-generator` для каждой страницы, у которой есть незаполненные image/hotspot-блоки.
+> **Важно:** Этот скилл НЕ генерирует промты сам. Он выступает оркестратором: собирает контекст и запускает субагент `generator-images` для каждой страницы, у которой есть незаполненные image/hotspot-блоки.
 
 ## Субагент
 
 | Файл | Режим | Назначение |
 |------|-------|------------|
-| [`.cursor/agents/image-page-generator.md`](../../agents/image-page-generator.md) | background | Генерация промтов и заполнение image/hotspot-блоков для одной страницы |
+| [`.cursor/agents/generator-images.md`](../../agents/generator-images.md) | background | Генерация промтов и заполнение image/hotspot-блоков для одной страницы |
 
 ## Logic
 
@@ -61,11 +61,11 @@ _active:
 
 ```yaml
 _lock:
-  agent: image-page-generator
+  agent: generator-images
   started: "{ISO timestamp}"
 ```
 
-**3b. Запуск субагентов.** Для каждой страницы запусти субагент `image-page-generator` **в фоне** с промтом. Каталог страниц: [content/pages/](../../../content/pages/), медиа: [content/files/](../../../content/files/).
+**3b. Запуск субагентов.** Для каждой страницы запусти субагент `generator-images` **в фоне** с промтом. Каталог страниц: [content/pages/](../../../content/pages/), медиа: [content/files/](../../../content/files/).
 
 ```
 Обработай image/hotspot-блоки в файле страницы.

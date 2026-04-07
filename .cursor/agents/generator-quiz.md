@@ -1,5 +1,5 @@
 ---
-name: quiz-page-generator
+name: generator-quiz
 description: >-
   Генерирует assessment-блоки для одной страницы курса.
   Вызывается скиллом generation-quiz. НЕ вызывай напрямую —
@@ -100,3 +100,4 @@ Presentation-блоки (`tinymce`, `accordion`, `tabs`, `image`, `video`, `hots
 Сохрани обновлённый файл страницы. Верни отчёт:
 - Имя файла страницы
 - Количество заполненных assessment-блоков (по типам)
+

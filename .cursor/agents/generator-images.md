@@ -1,5 +1,5 @@
 ---
-name: image-page-generator
+name: generator-images
 description: >-
   Генерирует промты для изображений и заполняет hotspot-блоки для одной страницы курса.
   Вызывается скиллом generation-image. НЕ вызывай напрямую —
@@ -57,3 +57,4 @@ is_background: true
 - Имя файла страницы
 - Количество обработанных image-блоков (filled / prompt_ready)
 - Количество обработанных hotspot-блоков
+
